@@ -417,6 +417,16 @@ a.project-card p {
   color: #888899;
 }
 
+.dev-chart {
+  display: block;
+  max-width: 500px;
+  width: 100%;
+  margin: 16px auto;
+  border: 2px ridge #4a4a77;
+  border-radius: 4px;
+  background: #fff;
+}
+
 .app-demo {
   width: 160px;
   margin: 12px 8px;
@@ -605,6 +615,10 @@ footer img {
 
   .contact-grid {
     grid-template-columns: 1fr;
+  }
+
+  .dev-chart {
+    max-width: 100%;
   }
 
   .app-demo {
