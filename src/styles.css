@@ -257,18 +257,23 @@ section h2::after {
   margin-bottom: 14px;
 }
 
+.skills-content h3 {
+  margin-bottom: 16px;
+}
+
 .skills-list {
   list-style: none;
   columns: 2;
   gap: 16px;
   display: inline-block;
   text-align: left;
+  margin-top: 0;
 }
 
 .skills-list li {
   color: #888899;
   font-size: 13px;
-  margin-bottom: 8px;
+  margin-bottom: 14px;
 }
 
 .skills-list li::before {
@@ -302,6 +307,7 @@ section h2::after {
   border: 2px ridge #3a3a66;
   padding: 16px;
   transition: border-color 0.2s;
+  cursor: pointer;
 }
 
 .project-card:hover {
@@ -382,7 +388,7 @@ a.project-card p {
 .project-showcase h4 {
   color: #a0a0cc;
   font-size: 16px;
-  margin: 20px 0 10px;
+  margin: 28px 0 14px;
   text-decoration: underline;
 }
 
