@@ -32,6 +32,14 @@
       <div class="about-content">
         <div class="about-text">
           <p>Hi! Welcome to my website! I am Bryce Uota and I am a 4th year Computer Science student at Cal Poly San Luis Obispo. I was born and raised in Salinas, CA where I attended Salinas High School. I enjoy listening to music, playing volleyball, and spending time with my dog Chester.</p>
+          <div class="recently-played">
+            <img src="../resources/music-0055.gif" alt="Music gif" class="now-playing-gif">
+            <div class="now-playing-info">
+              <span class="now-playing-label">Last Listened To:</span>
+              <a id="now-playing-link" href="#" target="_blank" class="now-playing-song">Loading...</a>
+              <span id="now-playing-date" class="now-playing-date"></span>
+            </div>
+          </div>
         </div>
         <div class="dog-container">
           <img src="../resources/IMG_0667.jpeg" alt="Chester the dog" class="dog-photo">
@@ -85,6 +93,37 @@
     <p> Bryce Uota 2026 </p>
     <img src="../resources/vim.gif" alt="Vim gif">
   </footer>
+
+  <script>
+    fetch('https://lastfm-last-played.biancarosa.com.br/bryceywycey/latest-song')
+      .then(r => r.json())
+      .then(data => {
+        var linkEl = document.getElementById('now-playing-link');
+        var dateEl = document.getElementById('now-playing-date');
+        if (data && data.track) {
+          var song = data.track.name;
+          var artist = data.track.artist['#text'];
+          linkEl.textContent = song + ' by ' + artist;
+          linkEl.href = 'https://open.spotify.com/search/' + encodeURIComponent(song + ' ' + artist);
+          if (data.track.date) {
+            var d = new Date(data.track.date.uts * 1000);
+            var now = new Date();
+            var diff = Math.floor((now - d) / 60000);
+            var timeAgo;
+            if (diff < 1) timeAgo = 'just now';
+            else if (diff < 60) timeAgo = diff + 'm ago';
+            else if (diff < 1440) timeAgo = Math.floor(diff / 60) + 'h ago';
+            else timeAgo = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+            dateEl.textContent = timeAgo;
+          }
+        } else {
+          linkEl.textContent = 'Could not load song';
+        }
+      })
+      .catch(() => {
+        document.getElementById('now-playing-link').textContent = 'Could not load song';
+      });
+  </script>
 
 </body>
 </html>
