@@ -115,6 +115,9 @@
             else if (diff < 1440) timeAgo = Math.floor(diff / 60) + 'h ago';
             else timeAgo = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
             dateEl.textContent = timeAgo;
+          } else {
+            dateEl.textContent = 'LIVE';
+            dateEl.classList.add('now-playing-live');
           }
         } else {
           linkEl.textContent = 'Could not load song';
